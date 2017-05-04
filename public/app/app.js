@@ -1,25 +1,23 @@
-var bookWishlistApp = angular.module('bookWishlistApp', [
+var bookWishlistApp = angular.module('app', [
     'ngRoute',
     'bookWishlistAppControllers'
 ]);
 
-bookWishlistApp.config(['$routeProvider', function($routeProvider) {
-
+bookWishlistApp.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
+    $locationProvider.hashPrefix('');
     $routeProvider.
     when('/login', {
-        templateUrl: 'partials/login.html',
+        templateUrl: 'app/controllers/account/login.html',
         controller: 'LoginController'
     }).
     when('/signup', {
-        templateUrl: 'partials/signup.html',
+        templateUrl: 'app/controllers/account/signup.html',
         controller: 'SignupController'
     }).
     when('/', {
-        templateUrl: 'partials/index.html',
+        templateUrl: 'app/controllers/dashboard/dashboard.html',
         controller: 'MainController'
-    }).
-    otherwise({
-        redirectTo: '/'
     });
+
 
 }]);
